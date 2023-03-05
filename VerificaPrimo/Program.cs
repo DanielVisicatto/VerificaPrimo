@@ -5,20 +5,28 @@ if (!double.TryParse(Console.ReadLine(), out var number))
 }
 else
 {
-    bool primeNumber = true;
+    bool ehPrimo = VerificaPrimo(number); // Passando number como parâmetro para VerificaPrimo()
+    RetornoUsuario(ehPrimo); // Passando isPrime como parâmetro para RetornoUsuario()
+}
 
-    for(int i = 2; i < number; i++) // dividir o numero de 2 a ele -1 se true nao é primo.
+bool VerificaPrimo(double number) // Recebendo o número a ser verificado como parâmetro
+{
+    bool primeNumber = true;
+    for (int i = 2; i < number; i++) // dividir o numero de 2 a ele -1 se true nao é primo.
     {
-        if(number % i == 0)
+        if (number % i == 0)
         {
             primeNumber = false;
             break;
         }
     }
+    return primeNumber;
+}
 
-    if (primeNumber && number > 0)
+void RetornoUsuario(bool primeNumber)
+{
+    if (primeNumber)
         Console.WriteLine("Primo!");
     else
         Console.WriteLine("Não Primo!");
 }
-//
